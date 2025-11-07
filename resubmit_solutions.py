@@ -118,7 +118,10 @@ def main():
         print(f"\n✓ Updated {SOLUTIONS_FILE} - kept {len(failed_solutions)} failed solution(s)")
         print(f"  Removed {results['success'] + results['already_exists']} successful/existing solution(s)")
     else:
-        print(f"\n✓ All solutions submitted successfully - wiped {SOLUTIONS_FILE}")
+        with open(SOLUTIONS_FILE, 'w') as f:
+            f.truncate()
+        print(f"\n✓ All solutions submitted successfully or already existed - wiped {SOLUTIONS_FILE}")
+        print(f"  Removed {results['success'] + results['already_exists']} successful/existing solution(s)")
 
     return 0
 
